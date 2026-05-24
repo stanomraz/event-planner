@@ -1,6 +1,12 @@
 # event-planner
+
+link here:
+https://event-planner-b5mk.onrender.com/
+
+descpr.:
 projekt na programko; new lebo stary som omylom wipol cize to je iba rerun
 
+zadanie:
 Zadanie 8: Webová aplikácia „Plánovanie udalostí a registrácia účastníkov“
 
 Cieľ projektu
