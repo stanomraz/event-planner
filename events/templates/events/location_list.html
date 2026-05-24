@@ -1,0 +1,40 @@
+{% extends 'events/base.html' %}
+
+{% block title %}Miesta{% endblock %}
+
+{% block content %}
+<h1>Miesta konania</h1>
+
+<a href="{% url 'location_create' %}">+ Nové miesto</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Názov</th>
+            <th>Adresa</th>
+            <th>Mesto</th>
+            <th>Kapacita</th>
+            <th>Akcie</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for location in locations %}
+            <tr>
+                <td>{{ location.name }}</td>
+                <td>{{ location.address }}</td>
+                <td>{{ location.city }}</td>
+                <td>{{ location.capacity }}</td>
+                <td>
+                    <a href="{% url 'location_edit' location.pk %}">Upraviť</a>
+                    <a href="{% url 'location_delete' location.pk %}">Vymazať</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="5">Žiadne miesta.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'events/base.html' %}
+
+{% block title %}Tagy{% endblock %}
+
+{% block content %}
+<h1>Tagy</h1>
+
+<a href="{% url 'tag_create' %}">+ Nový tag</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Názov</th>
+            <th>Popis</th>
+            <th>Akcie</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tag in tags %}
+            <tr>
+                <td>{{ tag.name }}</td>
+                <td>{{ tag.description }}</td>
+                <td>
+                    <a href="{% url 'tag_edit' tag.pk %}">Upraviť</a>
+                    <a href="{% url 'tag_delete' tag.pk %}">Vymazať</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="3">Žiadne tagy.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

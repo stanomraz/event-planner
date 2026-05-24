@@ -1,0 +1,15 @@
+{% extends 'events/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Uložiť</button>
+    <a href="javascript:history.back()">Zrušiť</a>
+</form>
+
+{% endblock %}

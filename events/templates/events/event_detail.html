@@ -1,0 +1,43 @@
+{% extends 'events/base.html' %}
+
+{% block title %}{{ event.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ event.title }}</h1>
+<p>{{ event.description }}</p>
+<p>Dátum: {{ event.date }}</p>
+<p>Čas: {{ event.time }}</p>
+<p>Miesto: {{ event.location }}</p>
+<p>Organizátor: {{ event.organizer.username }}</p>
+<p>Kapacita: {{ event.capacity }}</p>
+<p>Voľné miesta: {{ spots_left }}</p>
+
+{% if event.tags.all %}
+    <p>Tagy:
+        {% for tag in event.tags.all %}
+            <span>{{ tag.name }}</span>
+        {% endfor %}
+    </p>
+{% endif %}
+
+{% if user.is_authenticated %}
+    {% if is_registered %}
+        <a href="{% url 'event_unregister' event.pk %}">Odhlásiť sa</a>
+    {% else %}
+        {% if spots_left > 0 %}
+            <a href="{% url 'event_register' event.pk %}">Zaregistrovať sa</a>
+        {% else %}
+            <p>Event je plný!</p>
+        {% endif %}
+    {% endif %}
+
+    {% if user.is_staff %}
+        <a href="{% url 'event_edit' event.pk %}">Upraviť</a>
+        <a href="{% url 'event_delete' event.pk %}">Vymazať</a>
+        <a href="{% url 'event_participants' event.pk %}">Zoznam účastníkov</a>
+    {% endif %}
+{% else %}
+    <p><a href="{% url 'login' %}">Prihlás sa</a> pre registráciu.</p>
+{% endif %}
+
+{% endblock %}

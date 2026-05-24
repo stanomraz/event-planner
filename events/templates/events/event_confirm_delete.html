@@ -1,0 +1,14 @@
+{% extends 'events/base.html' %}
+
+{% block title %}Vymazať{% endblock %}
+
+{% block content %}
+<h1>Naozaj chceš vymazať "{{ object }}"?</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Áno, vymazať</button>
+    <a href="javascript:history.back()">Zrušiť</a>
+</form>
+
+{% endblock %}
