@@ -1,0 +1,368 @@
+[
+  {
+    "model": "events.location",
+    "pk": 1,
+    "fields": {
+      "name": "Aupark Convention Center",
+      "address": "Einsteinova 18",
+      "city": "Bratislava",
+      "capacity": 500
+    }
+  },
+  {
+    "model": "events.location",
+    "pk": 2,
+    "fields": {
+      "name": "Tabačka Kulturfabrik",
+      "address": "Štefánikova 25",
+      "city": "Košice",
+      "capacity": 200
+    }
+  },
+  {
+    "model": "events.location",
+    "pk": 3,
+    "fields": {
+      "name": "Mestský Dom Kultúry",
+      "address": "Námestie SNP 1",
+      "city": "Trenčín",
+      "capacity": 300
+    }
+  },
+  {
+    "model": "events.location",
+    "pk": 4,
+    "fields": {
+      "name": "Koliba Vrátna",
+      "address": "Vrátna dolina 12",
+      "city": "Terchová",
+      "capacity": 150
+    }
+  },
+  {
+    "model": "events.location",
+    "pk": 5,
+    "fields": {
+      "name": "Amfiteáter Terchová",
+      "address": "Terchová 1",
+      "city": "Terchová",
+      "capacity": 2000
+    }
+  },
+  {
+    "model": "events.location",
+    "pk": 6,
+    "fields": {
+      "name": "Kulturpark Košice",
+      "address": "Kukučínova 2",
+      "city": "Košice",
+      "capacity": 400
+    }
+  },
+  {
+    "model": "events.location",
+    "pk": 7,
+    "fields": {
+      "name": "Refinery Gallery",
+      "address": "Nobelova 18",
+      "city": "Bratislava",
+      "capacity": 250
+    }
+  },
+  {
+    "model": "events.location",
+    "pk": 8,
+    "fields": {
+      "name": "Technická Univerzita",
+      "address": "Letná 9",
+      "city": "Košice",
+      "capacity": 600
+    }
+  },
+  {
+    "model": "events.location",
+    "pk": 9,
+    "fields": {
+      "name": "Hradný Kopec",
+      "address": "Matúšova 1",
+      "city": "Trenčín",
+      "capacity": 800
+    }
+  },
+  {
+    "model": "events.location",
+    "pk": 10,
+    "fields": {
+      "name": "Elektráreň Bratislava",
+      "address": "Turbínova 1",
+      "city": "Bratislava",
+      "capacity": 1000
+    }
+  },
+  {
+    "model": "events.tag",
+    "pk": 1,
+    "fields": {
+      "name": "Hudba",
+      "description": "Hudobné eventy a koncerty"
+    }
+  },
+  {
+    "model": "events.tag",
+    "pk": 2,
+    "fields": {
+      "name": "Tech",
+      "description": "Technologické konferencie a workshopy"
+    }
+  },
+  {
+    "model": "events.tag",
+    "pk": 3,
+    "fields": {
+      "name": "Šport",
+      "description": "Športové eventy a súťaže"
+    }
+  },
+  {
+    "model": "events.tag",
+    "pk": 4,
+    "fields": {
+      "name": "Kultúra",
+      "description": "Kultúrne podujatia a výstavy"
+    }
+  },
+  {
+    "model": "events.tag",
+    "pk": 5,
+    "fields": {
+      "name": "Oslava",
+      "description": "Oslavy a párty"
+    }
+  },
+  {
+    "model": "events.tag",
+    "pk": 6,
+    "fields": {
+      "name": "Svadba",
+      "description": "Svadobné podujatia"
+    }
+  },
+  {
+    "model": "events.tag",
+    "pk": 7,
+    "fields": {
+      "name": "Workshop",
+      "description": "Vzdelávacie workshopy"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 1,
+    "fields": {
+      "title": "Django Workshop 2026",
+      "description": "Praktický workshop o Django frameworku pre začiatočníkov aj pokročilých.",
+      "date": "2026-06-15",
+      "time": "09:00:00",
+      "capacity": 50,
+      "location": 1,
+      "organizer": 1,
+      "tags": [2, 7]
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 2,
+    "fields": {
+      "title": "Letný Hudobný Festival",
+      "description": "Dvojdňový hudobný festival s viacerými scénami a žánrami.",
+      "date": "2026-07-20",
+      "time": "14:00:00",
+      "capacity": 400,
+      "location": 10,
+      "organizer": 1,
+      "tags": [1]
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 3,
+    "fields": {
+      "title": "Startup Meetup Košice",
+      "description": "Neformálne stretnutie startupistov a investorov z celého Slovenska.",
+      "date": "2026-06-28",
+      "time": "18:00:00",
+      "capacity": 100,
+      "location": 6,
+      "organizer": 1,
+      "tags": [2, 4]
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 4,
+    "fields": {
+      "title": "Bežecký Maratón Trenčín",
+      "description": "Mestský maratón pre všetkých nadšencov behu.",
+      "date": "2026-08-10",
+      "time": "07:00:00",
+      "capacity": 300,
+      "location": 9,
+      "organizer": 1,
+      "tags": [3]
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 5,
+    "fields": {
+      "title": "Divadelná Noc",
+      "description": "Špeciálne divadelné predstavenie pod holým nebom pri hrade.",
+      "date": "2026-07-05",
+      "time": "20:00:00",
+      "capacity": 150,
+      "location": 9,
+      "organizer": 1,
+      "tags": [4]
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 6,
+    "fields": {
+      "title": "Jánošíkové Dni Terchová",
+      "description": "Folklórny festival na počesť legendárneho zbojníka Juraja Jánošíka.",
+      "date": "2026-08-01",
+      "time": "10:00:00",
+      "capacity": 2000,
+      "location": 5,
+      "organizer": 1,
+      "tags": [1, 4, 5]
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 7,
+    "fields": {
+      "title": "Svadobná Hostina v Terchovej",
+      "description": "Exkluzívna svadobná oslava v nádhernom prostredí Terchovej doliny.",
+      "date": "2026-06-21",
+      "time": "15:00:00",
+      "capacity": 120,
+      "location": 4,
+      "organizer": 1,
+      "tags": [6, 5]
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 8,
+    "fields": {
+      "title": "Python Bootcamp",
+      "description": "Intenzívny 3-dňový bootcamp pre začiatočníkov v programovaní.",
+      "date": "2026-07-10",
+      "time": "08:30:00",
+      "capacity": 30,
+      "location": 8,
+      "organizer": 1,
+      "tags": [2, 7]
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 9,
+    "fields": {
+      "title": "Narodeninová Párty",
+      "description": "Veľká narodeninová oslava s hudbou, jedlom a zábavou.",
+      "date": "2026-06-30",
+      "time": "19:00:00",
+      "capacity": 200,
+      "location": 7,
+      "organizer": 1,
+      "tags": [5, 1]
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 10,
+    "fields": {
+      "title": "Výstava Moderného Umenia",
+      "description": "Výstava slovenských a zahraničných moderných umelcov.",
+      "date": "2026-07-15",
+      "time": "11:00:00",
+      "capacity": 250,
+      "location": 7,
+      "organizer": 1,
+      "tags": [4]
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 11,
+    "fields": {
+      "title": "Horský Beh Vrátna",
+      "description": "Náročný horský beh cez Vrátnu dolinu pre skúsených bežcov.",
+      "date": "2026-08-22",
+      "time": "06:00:00",
+      "capacity": 100,
+      "location": 4,
+      "organizer": 1,
+      "tags": [3, 5]
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 12,
+    "fields": {
+      "title": "UX/UI Design Workshop",
+      "description": "Workshop zameraný na moderný UX a UI dizajn pre webové aplikácie.",
+      "date": "2026-06-20",
+      "time": "10:00:00",
+      "capacity": 40,
+      "location": 1,
+      "organizer": 1,
+      "tags": [2, 7]
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 13,
+    "fields": {
+      "title": "Košice Jazz Festival",
+      "description": "Medzinárodný jazzový festival s hviezdami zo celého sveta.",
+      "date": "2026-09-05",
+      "time": "17:00:00",
+      "capacity": 400,
+      "location": 6,
+      "organizer": 1,
+      "tags": [1, 4]
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 14,
+    "fields": {
+      "title": "Svadobný Veľtrh Bratislava",
+      "description": "Najväčší svadobný veľtrh na Slovensku so stovkami vystavovateľov.",
+      "date": "2026-10-03",
+      "time": "09:00:00",
+      "capacity": 1000,
+      "location": 10,
+      "organizer": 1,
+      "tags": [6]
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 15,
+    "fields": {
+      "title": "Trenčín Pod Hradom",
+      "description": "Kultúrny festival pri trenčianskom hrade s hudbou a divadlom.",
+      "date": "2026-08-15",
+      "time": "16:00:00",
+      "capacity": 800,
+      "location": 9,
+      "organizer": 1,
+      "tags": [1, 4, 5]
+    }
+  }
+]
