@@ -1,40 +1,36 @@
 {% extends 'events/base.html' %}
 
-{% block title %}Miesta{% endblock %}
+{% block title %}Locations{% endblock %}
 
 {% block content %}
-<h1>Miesta konania</h1>
+<div class="tabs">
+    <a href="{% url 'home' %}" class="tab">DASHBOARD</a>
+    <a href="{% url 'location_list' %}" class="tab tab-active">LOCATIONS</a>
+    <a href="{% url 'event_list' %}" class="tab">EVENTS</a>
+</div>
 
-<a href="{% url 'location_create' %}">+ Nové miesto</a>
+<div class="list-container">
+    {% for location in locations %}
+        <div class="list-item">
+            <span class="item-name">{{ location.name }}</span>
+            <span class="item-meta">{{ location.address }}</span>
+            <span class="item-meta">{{ location.city }}</span>
+            <span class="item-meta">0/{{ location.capacity }}</span>
+            {% if user.is_staff %}
+                <span class="item-actions">
+                    <a href="{% url 'location_edit' location.pk %}" class="action-btn">✏️</a>
+                    <a href="{% url 'location_delete' location.pk %}" class="action-btn">🗑️</a>
+                </span>
+            {% endif %}
+        </div>
+    {% empty %}
+        <div class="list-item">
+            <span class="item-name">Žiadne miesta.</span>
+        </div>
+    {% endfor %}
+</div>
 
-<table>
-    <thead>
-        <tr>
-            <th>Názov</th>
-            <th>Adresa</th>
-            <th>Mesto</th>
-            <th>Kapacita</th>
-            <th>Akcie</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for location in locations %}
-            <tr>
-                <td>{{ location.name }}</td>
-                <td>{{ location.address }}</td>
-                <td>{{ location.city }}</td>
-                <td>{{ location.capacity }}</td>
-                <td>
-                    <a href="{% url 'location_edit' location.pk %}">Upraviť</a>
-                    <a href="{% url 'location_delete' location.pk %}">Vymazať</a>
-                </td>
-            </tr>
-        {% empty %}
-            <tr>
-                <td colspan="5">Žiadne miesta.</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
+{% if user.is_staff %}
+    <a href="{% url 'location_create' %}" class="fab">+</a>
+{% endif %}
 {% endblock %}

@@ -1,34 +1,23 @@
 {% extends 'events/base.html' %}
 
-{% block title %}Účastníci - {{ event.title }}{% endblock %}
+{% block title %}Attendees{% endblock %}
 
 {% block content %}
-<h1>Účastníci: {{ event.title }}</h1>
-<p>Registrovaní: {{ registrations.count }} / {{ event.capacity }}</p>
+<div class="page-header">
+    <a href="{% url 'event_detail' event.pk %}" class="back-btn">‹</a>
+    <h1 class="page-title">ATTENDEES</h1>
+</div>
 
-<table>
-    <thead>
-        <tr>
-            <th>Meno</th>
-            <th>Email</th>
-            <th>Dátum registrácie</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for reg in registrations %}
-            <tr>
-                <td>{{ reg.user.username }}</td>
-                <td>{{ reg.user.email }}</td>
-                <td>{{ reg.date_registered }}</td>
-            </tr>
-        {% empty %}
-            <tr>
-                <td colspan="3">Žiadni účastníci.</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-<a href="{% url 'event_detail' event.pk %}">Späť na event</a>
-
+<div class="list-container">
+    {% for reg in registrations %}
+        <div class="list-item">
+            <span class="item-name">{{ reg.user.username }}</span>
+            <span class="item-meta">{{ event.title }}</span>
+        </div>
+    {% empty %}
+        <div class="list-item">
+            <span class="item-name">Žiadni účastníci.</span>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}
