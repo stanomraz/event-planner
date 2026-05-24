@@ -1,29 +1,20 @@
 {% extends 'events/base.html' %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Home - Event Planner{% endblock %}
 
 {% block content %}
-<div class="tabs">
-    <a href="{% url 'home' %}" class="tab tab-active">DASHBOARD</a>
-    <a href="{% url 'location_list' %}" class="tab">LOCATIONS</a>
-    <a href="{% url 'event_list' %}" class="tab">EVENTS</a>
-</div>
+<h1>Najbližšie eventy</h1>
 
-<div class="list-container">
-    {% for event in events %}
-        <a href="{% url 'event_detail' event.pk %}" class="list-item">
-            <span class="item-name">{{ event.title }}</span>
-            <span class="item-meta">{{ event.date }} {{ event.time }}</span>
-            <span class="item-meta">{{ event.location }}</span>
-            <span class="item-meta">{{ event.registrations.count }}/{{ event.capacity }}</span>
-            <span class="item-tags">
-                {% for tag in event.tags.all %}{{ tag.name }}{% endfor %}
-            </span>
-        </a>
-    {% empty %}
-        <div class="list-item">
-            <span class="item-name">Žiadne eventy.</span>
-        </div>
-    {% endfor %}
-</div>
+{% for event in events %}
+    <div>
+        <h2><a href="{% url 'event_detail' event.pk %}">{{ event.title }}</a></h2>
+        <p>{{ event.date }} | {{ event.time }}</p>
+        <p>{{ event.location }}</p>
+        <p>Voľné miesta: {{ event.spots_left }}</p>
+    </div>
+{% empty %}
+    <p>Žiadne eventy.</p>
+{% endfor %}
+
+<a href="{% url 'event_list' %}">Zobraziť všetky eventy</a>
 {% endblock %}

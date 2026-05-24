@@ -1,38 +1,32 @@
 {% extends 'events/base.html' %}
 
-{% block title %}Events{% endblock %}
+{% block title %}Eventy{% endblock %}
 
 {% block content %}
-<div class="tabs">
-    <a href="{% url 'home' %}" class="tab">DASHBOARD</a>
-    <a href="{% url 'location_list' %}" class="tab">LOCATIONS</a>
-    <a href="{% url 'event_list' %}" class="tab tab-active">EVENTS</a>
-</div>
+<h1>Všetky eventy</h1>
 
-<div class="search-bar">
-    <form method="GET" class="search-form">
-        <input type="text" name="city" placeholder="Search..." value="{{ request.GET.city }}" class="search-input">
-        <button type="submit" class="search-btn">🔍</button>
-        <input type="date" name="date" value="{{ request.GET.date }}" class="filter-input">
-        <input type="text" name="tag" placeholder="Tag..." value="{{ request.GET.tag }}" class="filter-input">
-        <input type="text" name="organizer" placeholder="Organizátor..." value="{{ request.GET.organizer }}" class="filter-input">
-        <a href="{% url 'event_list' %}" class="clear-btn">✕</a>
-    </form>
-</div>
+<form method="GET">
+    <input type="date" name="date" value="{{ request.GET.date }}">
+    <input type="text" name="city" placeholder="Mesto" value="{{ request.GET.city }}">
+    <input type="text" name="tag" placeholder="Tag" value="{{ request.GET.tag }}">
+    <input type="text" name="organizer" placeholder="Organizátor" value="{{ request.GET.organizer }}">
+    <button type="submit">Filtrovať</button>
+    <a href="{% url 'event_list' %}">Zrušiť filter</a>
+</form>
 
-<div class="list-container">
-    {% for event in events %}
-        <a href="{% url 'event_detail' event.pk %}" class="list-item">
-            <span class="item-name">{{ event.title }}</span>
-            <span class="item-meta">{{ event.location }}</span>
-            <span class="item-meta">{{ event.date }} {{ event.time }}</span>
-            <span class="item-meta">{{ event.registrations.count }}/{{ event.capacity }}</span>
-            <span class="item-desc">{{ event.description|truncatechars:30 }}</span>
-        </a>
-    {% empty %}
-        <div class="list-item">
-            <span class="item-name">Žiadne eventy.</span>
-        </div>
-    {% endfor %}
-</div>
+{% for event in events %}
+    <div>
+        <h2><a href="{% url 'event_detail' event.pk %}">{{ event.title }}</a></h2>
+        <p>{{ event.date }} | {{ event.time }}</p>
+        <p>{{ event.location }}</p>
+        <p>Organizátor: {{ event.organizer.username }}</p>
+        <p>Voľné miesta: {{ event.spots_left }}</p>
+        {% for tag in event.tags.all %}
+            <span>{{ tag.name }}</span>
+        {% endfor %}
+    </div>
+{% empty %}
+    <p>Žiadne eventy.</p>
+{% endfor %}
+
 {% endblock %}

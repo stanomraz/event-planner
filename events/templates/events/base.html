@@ -4,35 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Event Planner{% endblock %}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'events/style.css' %}">
 </head>
 <body>
 
-<div class="app-container">
-    <div class="content">
-        {% if messages %}
-            {% for message in messages %}
-                <div class="message {{ message.tags }}">{{ message }}</div>
-            {% endfor %}
+<nav>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'event_list' %}">Eventy</a>
+    {% if user.is_authenticated %}
+        {% if user.is_staff %}
+            <a href="{% url 'location_list' %}">Miesta</a>
+            <a href="{% url 'tag_list' %}">Tagy</a>
+            <a href="{% url 'event_create' %}">+ Nový event</a>
         {% endif %}
+        <a href="{% url 'logout' %}">Odhlásiť ({{ user.username }})</a>
+    {% else %}
+        <a href="{% url 'login' %}">Prihlásiť</a>
+        <a href="{% url 'signup' %}">Registrovať</a>
+    {% endif %}
+</nav>
 
-        {% block content %}
-        {% endblock %}
-    </div>
+{% if messages %}
+    {% for message in messages %}
+        <div class="message {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
 
-    <nav class="bottom-nav">
-        <a href="{% url 'home' %}" class="nav-btn">
-            <span class="nav-icon">👤</span>
-        </a>
-        <a href="{% url 'event_create' %}" class="nav-btn nav-btn-center">
-            <span class="nav-icon">+</span>
-        </a>
-        <a href="{% url 'login' %}" class="nav-btn">
-            <span class="nav-icon">⚙️</span>
-        </a>
-    </nav>
-</div>
+{% block content %}
+{% endblock %}
 
 </body>
 </html>
