@@ -5,21 +5,21 @@
 {% block content %}
 <h1>{{ event.title }}</h1>
 <p>{{ event.description }}</p>
-<p>Dátum: {{ event.date }}</p>
-<p>Čas: {{ event.time }}</p>
-<p>Miesto: {{ event.location }}</p>
-<p>Organizátor: {{ event.organizer.username }}</p>
-<p>Kapacita: {{ event.capacity }}</p>
-<p>Voľné miesta: {{ spots_left }}</p>
+<p><b>Dátum:</b> {{ event.date }}</p>
+<p><b>Čas:</b> {{ event.time }}</p>
+<p><b>Miesto:</b> {{ event.location }}</p>
+<p><b>Organizátor:</b> {{ event.organizer.username }}</p>
+<p><b>Kapacita:</b> {{ event.capacity }}</p>
+<p><b>Voľné miesta:</b> {{ spots_left }}</p>
 
 {% if event.tags.all %}
-    <p>Tagy:
+    <p class="tags">
         {% for tag in event.tags.all %}
-            <span>{{ tag.name }}</span>
+            <span class="tag">{{ tag.name }}</span>
         {% endfor %}
     </p>
 {% endif %}
-
+<div class="botbar">
 {% if user.is_authenticated %}
     {% if is_registered %}
         <a href="{% url 'event_unregister' event.pk %}">Odhlásiť sa</a>
@@ -39,5 +39,5 @@
 {% else %}
     <p><a href="{% url 'login' %}">Prihlás sa</a> pre registráciu.</p>
 {% endif %}
-
+</div>
 {% endblock %}

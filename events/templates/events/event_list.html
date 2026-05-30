@@ -5,28 +5,30 @@
 {% block content %}
 <h1>Všetky eventy</h1>
 
-<form method="GET">
-    <input type="date" name="date" value="{{ request.GET.date }}">
-    <input type="text" name="city" placeholder="Mesto" value="{{ request.GET.city }}">
-    <input type="text" name="tag" placeholder="Tag" value="{{ request.GET.tag }}">
-    <input type="text" name="organizer" placeholder="Organizátor" value="{{ request.GET.organizer }}">
-    <button type="submit">Filtrovať</button>
+<form method="GET" class="filter-form">
+    <input type="date" name="date" value="{{ request.GET.date }}" class="input">
+    <input type="text" name="city" placeholder="Mesto" value="{{ request.GET.city }}" class="input">
+    <input type="text" name="tag" placeholder="Tag" value="{{ request.GET.tag }}" class="input">
+    <input type="text" name="organizer" placeholder="Organizátor" value="{{ request.GET.organizer }}" class="input">
+    <button type="submit" class="btn">Filtrovať</button>
     <a href="{% url 'event_list' %}">Zrušiť filter</a>
 </form>
-
+<div class="item-list">
 {% for event in events %}
-    <div>
+    <div class="event-item">
         <h2><a href="{% url 'event_detail' event.pk %}">{{ event.title }}</a></h2>
         <p>{{ event.date }} | {{ event.time }}</p>
         <p>{{ event.location }}</p>
         <p>Organizátor: {{ event.organizer.username }}</p>
         <p>Voľné miesta: {{ event.spots_left }}</p>
+        <div class="tags">
         {% for tag in event.tags.all %}
-            <span>{{ tag.name }}</span>
+            <span class="tag">{{ tag.name }}</span>
         {% endfor %}
+        </div>
     </div>
 {% empty %}
     <p>Žiadne eventy.</p>
 {% endfor %}
-
+</div>
 {% endblock %}

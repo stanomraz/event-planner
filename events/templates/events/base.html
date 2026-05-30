@@ -1,25 +1,30 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="sk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Event Planner{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'events/css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <nav>
-    <a href="{% url 'home' %}">Home</a>
-    <a href="{% url 'event_list' %}">Eventy</a>
+    <a href="{% url 'home' %}" class="nav-item">Home</a>
+    <a href="{% url 'event_list' %}" class="nav-item">Eventy</a>
     {% if user.is_authenticated %}
         {% if user.is_staff %}
-            <a href="{% url 'location_list' %}">Miesta</a>
-            <a href="{% url 'tag_list' %}">Tagy</a>
-            <a href="{% url 'event_create' %}">+ Nový event</a>
+            <a href="{% url 'location_list' %}" class="nav-item">Miesta</a>
+            <a href="{% url 'tag_list' %}" class="nav-item">Tagy</a>
+            <a href="{% url 'event_create' %}" class="nav-item">+ Nový event</a>
         {% endif %}
-        <a href="{% url 'logout' %}">Odhlásiť ({{ user.username }})</a>
+        <a href="{% url 'logout' %}" class="nav-item">Odhlásiť ({{ user.username }})</a>
     {% else %}
-        <a href="{% url 'login' %}">Prihlásiť</a>
-        <a href="{% url 'signup' %}">Registrovať</a>
+        <a href="{% url 'login' %}" class="nav-item">Prihlásiť</a>
+        <a href="{% url 'signup' %}" class="nav-item">Registrovať</a>
     {% endif %}
 </nav>
 

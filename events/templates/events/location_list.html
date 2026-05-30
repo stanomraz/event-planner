@@ -5,9 +5,9 @@
 {% block content %}
 <h1>Miesta konania</h1>
 
-<a href="{% url 'location_create' %}">+ Nové miesto</a>
+<a href="{% url 'location_create' %}" class="btn">+ Nové miesto</a>
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>Názov</th>
@@ -24,7 +24,7 @@
                 <td>{{ location.address }}</td>
                 <td>{{ location.city }}</td>
                 <td>{{ location.capacity }}</td>
-                <td>
+                <td class="actions">
                     <a href="{% url 'location_edit' location.pk %}">Upraviť</a>
                     <a href="{% url 'location_delete' location.pk %}">Vymazať</a>
                 </td>

@@ -20,7 +20,7 @@
             <tr>
                 <td>{{ tag.name }}</td>
                 <td>{{ tag.description }}</td>
-                <td>
+                <td class="actions">
                     <a href="{% url 'tag_edit' tag.pk %}">Upraviť</a>
                     <a href="{% url 'tag_delete' tag.pk %}">Vymazať</a>
                 </td>
