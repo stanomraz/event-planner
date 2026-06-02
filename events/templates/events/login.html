@@ -3,15 +3,18 @@
 {% block title %}Prihlásenie{% endblock %}
 
 {% block content %}
-<h1>Prihlásenie</h1>
-
-<form method="POST">
-    {% csrf_token %}
-    <input type="text" name="username" placeholder="Meno" required>
-    <input type="password" name="password" placeholder="Heslo" required>
-    <button type="submit">Prihlásiť</button>
-</form>
-
-<p>Nemáš účet? <a href="{% url 'signup' %}">Zaregistruj sa</a></p>
-
+<div class="container">
+    <h1>Prihlásenie</h1>
+    <div class="login-form">
+        <form method="POST" class="form">
+            {% csrf_token %}
+            <div class=" inputs">
+            <input type="text" name="username" placeholder="Meno" required class="input">
+            <input type="password" name="password" placeholder="Heslo" required class="input">
+                </div>
+            <button type="submit" class="btn">Prihlásiť</button>
+        </form>
+        <p>Nemáš účet? <a href="{% url 'signup' %}" class=" formlink">Zaregistruj sa</a></p>
+    </div>
+</div>
 {% endblock %}
