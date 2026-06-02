@@ -219,7 +219,18 @@ th{
     align-items: center;
     width: 100%;
 }
-
+.form-label{
+    font-weight: 300;
+}
 .formlink{
     text-decoration: underline;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+.back-btn{
+    font-size: 3rem;
 }

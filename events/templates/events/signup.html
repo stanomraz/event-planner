@@ -3,36 +3,39 @@
 {% block title %}Registrácia{% endblock %}
 
 {% block content %}
+<a href="javascript:history.back()" class="back-btn">‹</a>
+<div class="container">
+    
 <div class="page-header">
-    <a href="javascript:history.back()" class="back-btn">‹</a>
-    <h1 class="page-title">REGISTRÁCIA</h1>
+    
+    <h1 class="page-title">Registrácia</h1>
 </div>
 
-<div class="form-card">
+<div class="login-form">
     <h2 class="form-card-title">Nový účet</h2>
-    <form method="POST">
+    <form method="POST" class="form">
         {% csrf_token %}
         <div class="form-group">
             <label class="form-label">Username</label>
-            <input type="text" name="username" class="form-input" required>
+            <input type="text" name="username" class="input" required>
         </div>
         <div class="form-group">
             <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-input">
+            <input type="email" name="email" class="input">
         </div>
         <div class="form-group">
             <label class="form-label">Heslo</label>
-            <input type="password" name="password1" class="form-input" required>
+            <input type="password" name="password1" class="input" required>
         </div>
         <div class="form-group">
             <label class="form-label">Heslo znova</label>
-            <input type="password" name="password2" class="form-input" required>
+            <input type="password" name="password2" class="input" required>
         </div>
         {% if form.errors %}
             <div class="message error">{{ form.errors }}</div>
         {% endif %}
-        <button type="submit" class="submit-btn">Zaregistrovať sa</button>
+        <button type="submit" class="btn">Zaregistrovať sa</button>
     </form>
-    <p class="form-footer">Už máš účet? <a href="{% url 'login' %}">Prihlás sa</a></p>
+    <p class="form-footer">Už máš účet? <a class="formlink" href="{% url 'login' %}">Prihlás sa</a></p>
 </div>
 {% endblock %}
