@@ -3,13 +3,24 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<h1>{{ title }}</h1>
+<div class="page-header">
+    <a href="javascript:history.back()" class="back-btn">‹</a>
+    <h1 class="page-title">{{ title|upper }}</h1>
+</div>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Uložiť</button>
-    <a href="javascript:history.back()">Zrušiť</a>
-</form>
-
+<div class="form-card">
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                <label class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <div class="message error">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="submit-btn">Uložiť</button>
+    </form>
+</div>
 {% endblock %}

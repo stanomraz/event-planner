@@ -3,14 +3,36 @@
 {% block title %}Registrácia{% endblock %}
 
 {% block content %}
-<h1>Registrácia</h1>
+<div class="page-header">
+    <a href="javascript:history.back()" class="back-btn">‹</a>
+    <h1 class="page-title">REGISTRÁCIA</h1>
+</div>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Zaregistrovať sa</button>
-</form>
-
-<p>Už máš účet? <a href="{% url 'login' %}">Prihlás sa</a></p>
-
+<div class="form-card">
+    <h2 class="form-card-title">Nový účet</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="form-label">Username</label>
+            <input type="text" name="username" class="form-input" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-input">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Heslo</label>
+            <input type="password" name="password1" class="form-input" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Heslo znova</label>
+            <input type="password" name="password2" class="form-input" required>
+        </div>
+        {% if form.errors %}
+            <div class="message error">{{ form.errors }}</div>
+        {% endif %}
+        <button type="submit" class="submit-btn">Zaregistrovať sa</button>
+    </form>
+    <p class="form-footer">Už máš účet? <a href="{% url 'login' %}">Prihlás sa</a></p>
+</div>
 {% endblock %}
