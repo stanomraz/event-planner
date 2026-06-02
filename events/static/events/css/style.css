@@ -234,3 +234,14 @@ th{
 .back-btn{
     font-size: 3rem;
 }
+.form-card{
+    background-color: #ffffff0c;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px #ffffff1a;
+    border: 1px solid #ffffff4d;
+    color: #fff;
+    display: flex;
+    border-radius: 10px;
+    padding: 2rem 1.5rem;
+    flex-direction: column;
+}
