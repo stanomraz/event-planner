@@ -3,14 +3,15 @@
 {% block title %}Registrácia{% endblock %}
 
 {% block content %}
-<h1>Registrácia</h1>
-
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Zaregistrovať sa</button>
-</form>
-
-<p>Už máš účet? <a href="{% url 'login' %}">Prihlás sa</a></p>
-
+<div class="container">
+    <h1>Registrácia</h1>
+    <div class="login-form">
+        <form method="POST" class="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Zaregistrovať sa</button>
+        </form>
+        <p>Už máš účet? <a href="{% url 'login' %}" class="formlink">Prihlás sa</a></p>
+    </div>
+</div>
 {% endblock %}
