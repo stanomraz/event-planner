@@ -1,3 +1,5 @@
+# --- FILIP: Registrácia modelov v admin paneli ---
+
 from django.contrib import admin
 from .models import Event, Location, Tag, Registration
 

@@ -1,3 +1,4 @@
+# --- FILIP: URL konfigurácia pre všetky views ---
 from django.urls import path
 from . import views
 

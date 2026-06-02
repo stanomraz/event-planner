@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
+# --- FILIP: Location model ---
 class Location(models.Model):
     name = models.CharField(max_length=200)
     address = models.CharField(max_length=300)
@@ -11,7 +11,7 @@ class Location(models.Model):
     def __str__(self):
         return f"{self.name}, {self.city}"
 
-
+# --- FILIP: Tag model ---
 class Tag(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
@@ -19,7 +19,7 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
-
+# --- FILIP: Event model so vzťahmi na Location, User a Tag ---
 class Event(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
@@ -33,11 +33,12 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
+    # --- ALEX: Kontrola kapacity udalosti ---
     def spots_left(self):
         registered = self.registrations.filter(status='confirmed').count()
         return self.capacity - registered
 
-
+# --- ALEX: Registration model (M:N vzťah medzi User a Event) ---
 class Registration(models.Model):
     STATUS_CHOICES = [
         ('confirmed', 'Confirmed'),

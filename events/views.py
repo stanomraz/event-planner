@@ -18,10 +18,12 @@ def home(request):
 
 
 # EVENT VIEWS
+# --- FILIP: CRUD pre Event ---
 def event_list(request):
     events = Event.objects.all().order_by('date')
 
     # Filtrovanie
+    # --- FILIP: Filtrovanie eventov podľa dátumu, mesta, tagu, organizátora ---
     date = request.GET.get('date')
     city = request.GET.get('city')
     tag = request.GET.get('tag')
@@ -98,6 +100,7 @@ def event_delete(request, pk):
 # LOCATION VIEWS
 @login_required
 @user_passes_test(is_organizer)
+# --- FILIP: CRUD pre Location ---
 def location_list(request):
     locations = Location.objects.all()
     return render(request, 'events/location_list.html', {'locations': locations})
@@ -146,6 +149,7 @@ def location_delete(request, pk):
 # TAG VIEWS
 @login_required
 @user_passes_test(is_organizer)
+# --- FILIP: CRUD pre Tag ---
 def tag_list(request):
     tags = Tag.objects.all()
     return render(request, 'events/tag_list.html', {'tags': tags})
@@ -193,6 +197,7 @@ def tag_delete(request, pk):
 
 # REGISTRATION VIEWS
 @login_required
+# --- ALEX: Registrácia používateľa na event ---
 def event_register(request, pk):
     event = get_object_or_404(Event, pk=pk)
     if event.spots_left() <= 0:
@@ -209,6 +214,7 @@ def event_register(request, pk):
 
 
 @login_required
+# --- ALEX: Odhlásenie používateľa z eventu ---
 def event_unregister(request, pk):
     event = get_object_or_404(Event, pk=pk)
     registration = Registration.objects.filter(user=request.user, event=event).first()
@@ -228,6 +234,8 @@ def event_participants(request, pk):
 
 
 # AUTH VIEWS
+
+# --- ALEX: Login / Logout funkcionalita ---
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
