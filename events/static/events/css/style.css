@@ -492,3 +492,283 @@ td{
         justify-content: flex-start;
     }
 }
+
+/* ===== FINAL POLISH PATCH ===== */
+
+body{
+    max-width: 1180px;
+    margin: 0 auto 80px;
+    padding: 0 22px;
+}
+
+nav{
+    justify-content: flex-start;
+    gap: 0.55rem;
+    margin-bottom: 0.5rem;
+}
+
+nav .nav-item{
+    margin-right: 0;
+}
+
+/* Forms: fixes tag/location/event create pages */
+.form-card,
+.login-form{
+    margin: 0 auto;
+}
+
+.form-input,
+.input,
+select,
+textarea{
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: border-color var(--ease), background-color var(--ease), box-shadow var(--ease);
+}
+
+.form-input:focus,
+.input:focus,
+select:focus,
+textarea:focus{
+    outline: none;
+    border-color: var(--accent-border);
+    background-color: var(--elevated);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+textarea{
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Checkbox list for tags in event form */
+.form-group ul{
+    list-style: none;
+    padding: 0;
+    margin: 0.35rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+
+.form-group li label{
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background-color: var(--elevated);
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.form-group input[type="checkbox"]{
+    accent-color: var(--accent);
+}
+
+/* Error lists / warnings */
+.errorlist{
+    list-style: none;
+    padding: 0;
+    margin: 0.4rem 0 0;
+}
+
+.errorlist li{
+    padding: 0.65rem 0.8rem;
+    border-radius: var(--radius-sm);
+    background-color: #f8717114;
+    border: 1px solid #f871714d;
+    color: var(--error);
+    font-size: 0.85rem;
+}
+
+.message.error{
+    width: 100%;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+/* Tables: fixes tags table without class="table" */
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+td a,
+.actions a{
+    padding: 0.4rem 0.7rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--elevated);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.84rem;
+}
+
+td a:hover,
+.actions a:hover{
+    color: var(--text);
+    border-color: var(--accent-border);
+}
+
+/* Create links like + Nový tag */
+h1 + a:not(.btn){
+    display: inline-block;
+    padding: 0.55rem 1.15rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--accent);
+    border: 1px solid var(--accent);
+    color: #04201c;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+h1 + a:not(.btn):hover{
+    background-color: var(--accent-hover);
+}
+
+/* Event list cards */
+.event-card{
+    position: relative;
+    gap: 0.45rem;
+    padding: 1.35rem 1.45rem;
+}
+
+.event-card h2,
+.event-card h3{
+    font-size: 1.18rem;
+    letter-spacing: -0.01em;
+}
+
+.event-card p{
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.event-card .tags{
+    margin-top: 0.45rem;
+}
+
+.item-list{
+    gap: 16px;
+}
+
+/* Filter form */
+.filter-form{
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin-bottom: 24px;
+}
+
+.filter-form .input{
+    flex: 1 1 160px;
+    min-width: 150px;
+}
+
+.filter-form input[type="date"]{
+    color-scheme: dark;
+    min-width: 165px;
+}
+
+.filter-form input[type="date"]::-webkit-calendar-picker-indicator{
+    filter: invert(1);
+    opacity: 0.85;
+    cursor: pointer;
+}
+
+.filter-form a{
+    margin-left: 0;
+    text-decoration: none;
+    padding: 0.55rem 0.9rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--elevated);
+    border: 1px solid var(--border);
+}
+
+/* Homepage dashboard spacing */
+.home-columns{
+    gap: 20px;
+}
+
+.home-column{
+    background-color: #ffffff08;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+}
+
+/* Detail bottom bar */
+.botbar{
+    max-width: 1180px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 22px;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+}
+
+.botbar a{
+    padding: 0.55rem 1rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--elevated);
+    border: 1px solid var(--border);
+}
+
+/* Mobile */
+@media (max-width: 700px){
+    body{
+        padding: 0 14px;
+    }
+
+    nav{
+        gap: 0.45rem;
+    }
+
+    nav .nav-item{
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 0.55rem 0.7rem;
+    }
+
+    .filter-form{
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-form .input,
+    .filter-form .btn,
+    .filter-form a{
+        width: 100%;
+    }
+
+    table{
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .login-form,
+    .form-card{
+        padding: 1.5rem 1.1rem;
+    }
+
+    .home-column{
+        width: 100%;
+    }
+}
