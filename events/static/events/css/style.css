@@ -777,3 +777,10 @@ h1 + a:not(.btn):hover{
         width: 100%;
     }
 }
+
+.show-events-btn {
+    display: inline-block; /* Aby správne fungovali okraje */
+    margin-top: 20px;      /* Odsadenie od horného boxu */
+    margin-left: 15px;     /* Odsadenie od ľavého kraja (ak treba) */
+    margin-bottom: 20px;   /* Odsadenie od spodku stránky */
+}
