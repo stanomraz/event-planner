@@ -793,3 +793,34 @@ h1, h2, .page-title {
     margin-right: 0 !important;
     display: block !important;
 }
+
+/* Zúženie celého zoznamu eventov na stred */
+.events-list-container, 
+main .card, 
+.event-card {
+    max-width: 650px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* Zúženie a vycentrovanie filtračného baru navrchu */
+.filter-bar, 
+form[method="GET"] {
+    max-width: 650px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Zmenšenie tlačidla Prihlásiť sa a jeho hodenie na stred */
+.event-card button, 
+.event-card .btn-primary,
+.event-card a[href*="register"],
+.event-card a[href*="attend"] { 
+    max-width: 200px !important;
+    margin: 15px auto 0 auto !important;
+    display: block !important;
+    text-align: center;
+    border-radius: 20px !important; /* Voliteľné: pekné zaoblené tlačidlo */
+}
