@@ -13,10 +13,11 @@
     <button type="submit" class="btn">Filtrovať</button>
     <a href="{% url 'event_list' %}">Zrušiť filter</a>
 </form>
+
 <div class="item-list">
 {% for event in events %}
-    <div class="event-item">
-        <h2><a href="{% url 'event_detail' event.pk %}">{{ event.title }}</a></h2>
+    <a href="{% url 'event_detail' event.pk %}" class="event-item event-card">
+        <h2>{{ event.title }}</h2>
         <p>{{ event.date }} | {{ event.time }}</p>
         <p>{{ event.location }}</p>
         <p>Organizátor: {{ event.organizer.username }}</p>
@@ -26,7 +27,13 @@
             <span class="tag">{{ tag.name }}</span>
         {% endfor %}
         </div>
-    </div>
+        {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'event_register' event.pk %}" class="register-form" onclick="event.stopPropagation()">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-register">Prihlásiť sa</button>
+        </form>
+        {% endif %}
+    </a>
 {% empty %}
     <p>Žiadne eventy.</p>
 {% endfor %}

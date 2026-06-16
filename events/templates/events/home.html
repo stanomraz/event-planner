@@ -4,17 +4,43 @@
 
 {% block content %}
 <h1>Najbližšie eventy</h1>
-<div class="item-list">
-{% for event in events %}
-    <div class="item">
-        <h2><a href="{% url 'event_detail' event.pk %}">{{ event.title }}</a></h2>
-        <p>{{ event.date }} | {{ event.time }}</p>
-        <p>{{ event.location }}</p>
-        <p>Voľné miesta: {{ event.spots_left }}</p>
+
+<div class="home-columns">
+    <div class="home-column">
+        <h2>Všetky najbližšie eventy</h2>
+        <div class="item-list">
+        {% for event in events %}
+            <a href="{% url 'event_detail' event.pk %}" class="event-card">
+                <h3>{{ event.title }}</h3>
+                <p>{{ event.date }} | {{ event.time }}</p>
+                <p>{{ event.location }}</p>
+                <p>Voľné miesta: {{ event.spots_left }}</p>
+            </a>
+        {% empty %}
+            <p>Žiadne eventy.</p>
+        {% endfor %}
+        </div>
     </div>
-{% empty %}
-    <p>Žiadne eventy.</p>
-{% endfor %}
+
+    <div class="home-column">
+        <h2>Moje najbližšie eventy</h2>
+        {% if user.is_authenticated %}
+        <div class="item-list">
+        {% for event in my_events %}
+            <a href="{% url 'event_detail' event.pk %}" class="event-card">
+                <h3>{{ event.title }}</h3>
+                <p>{{ event.date }} | {{ event.time }}</p>
+                <p>{{ event.location }}</p>
+            </a>
+        {% empty %}
+            <p>Nie si prihlásený na žiadny event.</p>
+        {% endfor %}
+        </div>
+        {% else %}
+            <p>Pre zobrazenie tvojich eventov sa <a href="{% url 'login' %}">prihlás</a>.</p>
+        {% endif %}
+    </div>
 </div>
+
 <a href="{% url 'event_list' %}">Zobraziť všetky eventy</a>
 {% endblock %}
