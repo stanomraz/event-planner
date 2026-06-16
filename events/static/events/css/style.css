@@ -794,16 +794,36 @@ h1, h2, .page-title {
     display: block !important;
 }
 
-/* Zmenšenie tlačidla Prihlásiť sa a jeho vycentrovanie */
+/* Kontajner pre spodnú časť karty (ak tam máš obalovací div, inak to chytí priamo prvky) */
+.event-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Vytvorenie riadku pre tagy a tlačidlo na spodku karty */
+.event-card .event-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto; /* Pushne to úplne na spodok */
+    padding-top: 20px;
+    align-items: center;
+    justify-content: space-between; /* Tagy vľavo, tlačidlo vpravo */
+    width: 100%;
+}
+
+/* Fix pre tlačidlo, aby letelo doprava a malo normálnu šírku */
 .event-card button, 
 .event-card .btn,
 .event-card a.btn,
-.event-card form button,
-form[action*="attend"] button,
-form[action*="join"] button { 
-    max-width: 220px !important;
+.event-card form { 
+    margin: 0 !important; /* Zrušíme centrovanie z minula */
+    max-width: 200px !important;
     width: 100% !important;
-    margin: 20px auto 0 auto !important;
-    display: block !important;
-    text-align: center;
+}
+
+/* Ak je tlačidlo obalené vo formulári, povieme formuláru nech netiahne cez celú šírku */
+.event-card form {
+    display: inline-block;
+    width: auto !important;
 }
