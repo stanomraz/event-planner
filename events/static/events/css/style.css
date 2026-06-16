@@ -502,7 +502,10 @@ body{
 }
 
 nav{
-    justify-content: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 0.55rem;
     margin-bottom: 0.5rem;
 }
@@ -684,12 +687,38 @@ h1 + a:not(.btn):hover{
 .filter-form input[type="date"]{
     color-scheme: dark;
     min-width: 165px;
+    position: relative;
+    padding-right: 2.7rem;
+}
+
+.filter-form input[type="date"]:not(:focus)::-webkit-datetime-edit,
+.filter-form input[type="date"]:not(:focus)::-webkit-datetime-edit-fields-wrapper,
+.filter-form input[type="date"]:not(:focus)::-webkit-datetime-edit-text,
+.filter-form input[type="date"]:not(:focus)::-webkit-datetime-edit-month-field,
+.filter-form input[type="date"]:not(:focus)::-webkit-datetime-edit-day-field,
+.filter-form input[type="date"]:not(:focus)::-webkit-datetime-edit-year-field{
+    color: transparent;
+}
+
+.filter-form input[type="date"]:focus::-webkit-datetime-edit,
+.filter-form input[type="date"]:focus::-webkit-datetime-edit-fields-wrapper,
+.filter-form input[type="date"]:focus::-webkit-datetime-edit-text,
+.filter-form input[type="date"]:focus::-webkit-datetime-edit-month-field,
+.filter-form input[type="date"]:focus::-webkit-datetime-edit-day-field,
+.filter-form input[type="date"]:focus::-webkit-datetime-edit-year-field{
+    color: var(--text);
 }
 
 .filter-form input[type="date"]::-webkit-calendar-picker-indicator{
-    filter: invert(1);
-    opacity: 0.85;
+    filter: invert(88%) sepia(12%) saturate(346%) hue-rotate(179deg) brightness(95%) contrast(88%);
+    opacity: 1;
     cursor: pointer;
+    width: 1.15rem;
+    height: 1.15rem;
+}
+
+.filter-form input[type="date"]::-webkit-calendar-picker-indicator:hover{
+    filter: invert(83%) sepia(42%) saturate(713%) hue-rotate(119deg) brightness(96%) contrast(92%);
 }
 
 .filter-form a{
@@ -711,6 +740,19 @@ h1 + a:not(.btn):hover{
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1rem;
+}
+
+.home-column + h1,
+.home-column + h2,
+.home-columns + h1,
+.home-columns + h2,
+.item-list + h1,
+.item-list + h2,
+.event-card + h1,
+.event-card + h2,
+.item + h1,
+.item + h2{
+    margin-top: 34px;
 }
 
 /* Detail bottom bar */
