@@ -461,7 +461,21 @@ h1 + a:not(.btn):hover{
 .date-input{
     color: transparent;
 }
+.date-input::-webkit-datetime-edit-fields-wrapper,
+.date-input::-webkit-datetime-edit-text,
+.date-input::-webkit-datetime-edit-month-field,
+.date-input::-webkit-datetime-edit-day-field,
+.date-input::-webkit-datetime-edit-year-field{
+    color: transparent;
+}
 .date-input.has-value{
+    color: var(--text);
+}
+.date-input.has-value::-webkit-datetime-edit-fields-wrapper,
+.date-input.has-value::-webkit-datetime-edit-text,
+.date-input.has-value::-webkit-datetime-edit-month-field,
+.date-input.has-value::-webkit-datetime-edit-day-field,
+.date-input.has-value::-webkit-datetime-edit-year-field{
     color: var(--text);
 }
 .filter-form input[type="date"]::-webkit-calendar-picker-indicator{
