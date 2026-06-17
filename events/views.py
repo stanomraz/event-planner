@@ -12,6 +12,7 @@ def is_organizer(user):
 
 
 # HOME
+# HOME
 def home(request):
     events = Event.objects.all().order_by('date')[:6]
     my_events = []
@@ -19,7 +20,7 @@ def home(request):
         my_events = Event.objects.filter(
             registrations__user=request.user,
             registrations__status='confirmed'
-        ).order_by('date')[:6]
+        ).order_by('date')
     return render(request, 'events/home.html', {'events': events, 'my_events': my_events})
 
 
