@@ -45,7 +45,9 @@ html{
 }
 
 body{
-    margin: 0 20px 80px;
+    max-width: 1180px;
+    margin: 0 auto 80px;
+    padding: 0 22px;
 }
 
 a{
@@ -58,6 +60,7 @@ h1{
     font-weight: 700;
     font-size: 1.9rem;
     letter-spacing: -0.01em;
+    text-align: center;
 }
 
 h2{
@@ -72,17 +75,19 @@ p{
     font-size: 0.92rem;
 }
 
-/* ---------- NAV ---------- */
+/* ============================================================
+   NAV
+   ============================================================ */
 nav{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 1.1rem 0;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.55rem;
+    padding: 1.1rem 0;
+    margin-bottom: 0.5rem;
 }
 nav .nav-item{
-    margin-right: 0.4rem;
     padding: 0.5rem 1rem;
     border-radius: var(--radius-sm);
     background-color: var(--surface);
@@ -103,11 +108,14 @@ nav .nav-item:active{
     color: var(--accent-hover);
 }
 
-/* ---------- PAGE HEADER ---------- */
+/* ============================================================
+   PAGE HEADER  (used on form pages: back-arrow + centered title)
+   ============================================================ */
 .page-header{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    position: relative;
     flex-wrap: wrap;
     gap: 1rem;
 }
@@ -116,9 +124,12 @@ nav .nav-item:active{
     font-weight: 700;
     font-size: 1.9rem;
     letter-spacing: -0.01em;
+    text-align: center;
 }
 
-/* ---------- MESSAGES ---------- */
+/* ============================================================
+   MESSAGES
+   ============================================================ */
 .message{
     padding: 0.8rem 1.1rem;
     border-radius: var(--radius-sm);
@@ -126,6 +137,9 @@ nav .nav-item:active{
     font-size: 0.9rem;
     border: 1px solid var(--border);
     background-color: var(--surface);
+    width: 100%;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
 }
 .message.success{
     background-color: #34d39914;
@@ -143,53 +157,26 @@ nav .nav-item:active{
     color: var(--warning);
 }
 
-/* ---------- LISTS / CARDS ---------- */
+/* ============================================================
+   LISTS / CARDS
+   ============================================================ */
 .item-list{
     display: flex;
     width: 100%;
     flex-wrap: wrap;
-    gap: 18px;
+    gap: 16px;
     padding-bottom: 30px;
 }
 
-.item,
-.event-item{
-    background-color: var(--surface);
-    width: 100%;
-    padding: 1.25rem 1.4rem;
-    border-radius: var(--radius);
-    display: flex;
-    gap: 24px;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    flex-direction: row;
-    transition: background-color var(--ease), border-color var(--ease), transform var(--ease), box-shadow var(--ease);
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-}
-.item:hover,
-.event-item:hover{
-    background-color: var(--elevated);
-    border-color: var(--border-strong);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
-}
-.item:active,
-.event-item:active{
-    transform: translateY(0);
-}
-.event-item h2{
-    width: 100%;
-}
-
-/* Whole-card clickable link (homepage + event list) */
+/* Generic clickable card (used for event cards, on homepage + event list) */
 .event-card{
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 0.15rem;
+    text-align: left;
+    gap: 0.45rem;
     background-color: var(--surface);
-    padding: 1.25rem 1.4rem;
+    padding: 1.35rem 1.45rem;
     border-radius: var(--radius);
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
@@ -203,12 +190,49 @@ nav .nav-item:active{
     transform: translateY(-3px);
     box-shadow: var(--shadow-hover);
 }
-.event-card h2, .event-card h3{
+.event-card h2,
+.event-card h3{
     margin: 0 0 0.3rem;
     color: var(--text);
+    text-align: left;
+    font-size: 1.18rem;
+    letter-spacing: -0.01em;
+}
+.event-card p{
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+.event-card .tags{
+    margin-top: 0.45rem;
 }
 
-/* ---------- TAGS ---------- */
+/* Bottom row of an event card: tags on the left, register button on the right */
+.event-bottom-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 0.6rem;
+}
+.event-bottom-row .tags{
+    width: auto;
+    margin-top: 0;
+}
+.event-bottom-row .register-form{
+    width: auto;
+    margin-top: 0;
+}
+.event-bottom-row .btn-register{
+    width: auto;
+    margin: 0;
+}
+
+/* ============================================================
+   TAGS
+   ============================================================ */
 .tags{
     width: 100%;
     display: flex;
@@ -226,8 +250,10 @@ nav .nav-item:active{
     border: 1px solid var(--accent-border);
 }
 
-/* ---------- TABLE ---------- */
-table.table{
+/* ============================================================
+   TABLES
+   ============================================================ */
+table{
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -235,6 +261,7 @@ table.table{
     border-radius: var(--radius);
     overflow: hidden;
     border: 1px solid var(--border);
+    box-shadow: var(--shadow);
 }
 th, td{
     padding: 0.9rem 1.2rem;
@@ -261,8 +288,24 @@ td{
     gap: 10px;
     justify-content: flex-start;
 }
+td a,
+.actions a{
+    padding: 0.4rem 0.7rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--elevated);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.84rem;
+}
+td a:hover,
+.actions a:hover{
+    color: var(--text);
+    border-color: var(--accent-border);
+}
 
-/* ---------- BUTTONS ---------- */
+/* ============================================================
+   BUTTONS / LINKS
+   ============================================================ */
 .btn{
     display: inline-block;
     padding: 0.55rem 1.15rem;
@@ -290,19 +333,38 @@ td{
     border-color: var(--accent);
     color: #04201c;
 }
-.filter-form .btn:hover,
-.btn[type="submit"]:hover{
+.btn[type="submit"]:hover,
+.filter-form .btn:hover{
     background-color: var(--accent-hover);
     border-color: var(--accent-hover);
 }
 
-/* Register button inside event card */
+/* Standalone "create" links, e.g. "+ Nový tag", "+ Nové miesto" */
+a.btn,
+h1 + a:not(.btn){
+    display: inline-block;
+    padding: 0.55rem 1.15rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--accent);
+    border: 1px solid var(--accent);
+    color: #04201c;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+a.btn:hover,
+h1 + a:not(.btn):hover{
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+/* Register button inside an event card */
 .register-form{
     margin-top: 0.6rem;
     width: 100%;
 }
 .btn-register{
     width: 100%;
+    max-width: 200px;
     background-color: var(--accent-soft);
     border: 1px solid var(--accent-border);
     color: var(--accent-hover);
@@ -317,23 +379,48 @@ td{
 .back-btn{
     font-size: 2.2rem;
     color: var(--text-muted);
+    display: inline-block;
 }
 .back-btn:hover{
     color: var(--text);
 }
-
-/* ---------- BOTTOM BAR ---------- */
-.botbar{
-    width: 100%;
-    position: fixed;
-    bottom: 20px;
+.page-header .back-btn{
+    position: absolute;
     left: 0;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
 }
 
-/* ---------- FILTER FORM ---------- */
+.show-events-btn{
+    display: inline-block;
+    margin: 20px 0 20px 15px;
+}
+
+/* ============================================================
+   BOTTOM BAR  (event detail page actions)
+   ============================================================ */
+.botbar{
+    width: 100%;
+    max-width: 1180px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    padding: 0 22px;
+    margin-top: 20px;
+}
+.botbar a{
+    padding: 0.55rem 1rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--elevated);
+    border: 1px solid var(--border);
+}
+
+/* ============================================================
+   FILTER FORM  (event list page)
+   ============================================================ */
 .filter-form{
     display: flex;
     width: 100%;
@@ -343,40 +430,129 @@ td{
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    padding: 1rem;
+}
+.filter-form .input{
+    flex: 1 1 160px;
+    min-width: 150px;
 }
 .filter-form a{
-    margin-left: auto;
+    margin-left: 0;
     color: var(--text-muted);
     font-size: 0.85rem;
-    text-decoration: underline;
+    text-decoration: none;
+    padding: 0.55rem 0.9rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--elevated);
+    border: 1px solid var(--border);
 }
 .filter-form a:hover{
     color: var(--text);
 }
 
-.input{
-    padding: 0.55rem 0.8rem;
+.filter-form input[type="date"]{
+    color-scheme: dark;
+    min-width: 165px;
+}
+.date-input{
+    color: transparent;
+}
+.date-input.has-value{
+    color: var(--text);
+}
+.filter-form input[type="date"]::-webkit-calendar-picker-indicator{
+    filter: invert(1);
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* ============================================================
+   INPUTS / FORMS
+   ============================================================ */
+.input,
+.form-input,
+select,
+textarea{
+    width: 100%;
+    padding: 0.7rem 0.9rem;
     border-radius: var(--radius-sm);
     background-color: var(--surface);
-    transition: border-color var(--ease), background-color var(--ease);
     border: 1px solid var(--border);
     color: var(--text);
     font-family: inherit;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
+    transition: border-color var(--ease), background-color var(--ease), box-shadow var(--ease);
 }
-.input:focus{
+.input:focus,
+.form-input:focus,
+select:focus,
+textarea:focus{
     outline: none;
     border-color: var(--accent-border);
     background-color: var(--elevated);
+    box-shadow: 0 0 0 3px var(--accent-soft);
 }
 .input::placeholder{
     color: var(--text-faint);
 }
+textarea{
+    resize: vertical;
+    min-height: 100px;
+}
+select{
+    color-scheme: dark;
+    cursor: pointer;
+}
 
-/* ---------- HOMEPAGE TWO-COLUMN LAYOUT ---------- */
+/* Checkbox list for tags in the event form */
+.form-group ul{
+    list-style: none;
+    padding: 0;
+    margin: 0.35rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+.form-group li label{
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background-color: var(--elevated);
+    color: var(--text-muted);
+    cursor: pointer;
+}
+.form-group input[type="checkbox"]{
+    accent-color: var(--accent);
+}
+
+/* Error lists under a field */
+.errorlist{
+    list-style: none;
+    padding: 0;
+    margin: 0.4rem 0 0;
+}
+.errorlist li{
+    padding: 0.65rem 0.8rem;
+    border-radius: var(--radius-sm);
+    background-color: #f8717114;
+    border: 1px solid #f871714d;
+    color: var(--error);
+    font-size: 0.85rem;
+}
+
+/* ============================================================
+   HOMEPAGE — TWO-COLUMN DASHBOARD
+   ============================================================ */
 .home-columns{
     display: flex;
-    gap: 24px;
+    gap: 20px;
     width: 100%;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -384,6 +560,10 @@ td{
 .home-column{
     flex: 1 1 380px;
     min-width: 0;
+    background-color: #ffffff08;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
 }
 .home-column h2{
     margin-bottom: 14px;
@@ -392,13 +572,16 @@ td{
     font-size: 0.8rem;
     letter-spacing: 0.05em;
     font-weight: 700;
+    text-align: left;
 }
 .home-column .item-list{
     flex-direction: column;
     flex-wrap: nowrap;
 }
 
-/* ---------- AUTH / FORM CONTAINER ---------- */
+/* ============================================================
+   AUTH / FORM CARD  (login, signup, event create/edit)
+   ============================================================ */
 .container{
     display: flex;
     flex-direction: column;
@@ -410,6 +593,8 @@ td{
 .login-form,
 .form-card{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: var(--surface);
     box-shadow: var(--shadow);
     border: 1px solid var(--border);
@@ -419,15 +604,12 @@ td{
     border-radius: var(--radius);
     padding: 2.2rem 1.8rem;
     gap: 1rem;
-    flex-direction: column;
-    align-items: center;
+    margin: 0 auto;
 }
-
 .login-form p{
     margin: 0;
     text-align: center;
 }
-
 .form-card-title{
     font-size: 1.3rem;
     font-weight: 700;
@@ -448,9 +630,22 @@ td{
     align-items: center;
     width: 100%;
 }
-
 .form-label{
     font-weight: 500;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    width: 100%;
+}
+.form-footer{
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 100%;
     color: var(--text-muted);
     font-size: 0.85rem;
 }
@@ -463,285 +658,15 @@ td{
     color: var(--accent);
 }
 
-.form-group{
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    width: 100%;
-}
-
-.form-footer{
-    display: flex;
-    justify-content: center;
-    gap: 0.4rem;
-    width: 100%;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-}
-
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 700px){
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px){
     .home-columns{
         flex-direction: column;
     }
-    .item, .event-item{
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    nav{
-        justify-content: flex-start;
-    }
 }
 
-/* ===== FINAL POLISH PATCH ===== */
-
-body{
-    max-width: 1180px;
-    margin: 0 auto 80px;
-    padding: 0 22px;
-}
-
-nav{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.55rem;
-    margin-bottom: 0.5rem;
-}
-
-nav .nav-item{
-    margin-right: 0;
-}
-
-/* Forms: fixes tag/location/event create pages */
-.form-card,
-.login-form{
-    margin: 0 auto;
-}
-
-.form-input,
-.input,
-select,
-textarea{
-    width: 100%;
-    padding: 0.7rem 0.9rem;
-    border-radius: var(--radius-sm);
-    background-color: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-family: inherit;
-    font-size: 0.9rem;
-    transition: border-color var(--ease), background-color var(--ease), box-shadow var(--ease);
-}
-
-.form-input:focus,
-.input:focus,
-select:focus,
-textarea:focus{
-    outline: none;
-    border-color: var(--accent-border);
-    background-color: var(--elevated);
-    box-shadow: 0 0 0 3px var(--accent-soft);
-}
-
-textarea{
-    resize: vertical;
-    min-height: 100px;
-}
-
-/* Checkbox list for tags in event form */
-.form-group ul{
-    list-style: none;
-    padding: 0;
-    margin: 0.35rem 0 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.55rem;
-}
-
-.form-group li label{
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    padding: 0.45rem 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background-color: var(--elevated);
-    color: var(--text-muted);
-    cursor: pointer;
-}
-
-.form-group input[type="checkbox"]{
-    accent-color: var(--accent);
-}
-
-/* Error lists / warnings */
-.errorlist{
-    list-style: none;
-    padding: 0;
-    margin: 0.4rem 0 0;
-}
-
-.errorlist li{
-    padding: 0.65rem 0.8rem;
-    border-radius: var(--radius-sm);
-    background-color: #f8717114;
-    border: 1px solid #f871714d;
-    color: var(--error);
-    font-size: 0.85rem;
-}
-
-.message.error{
-    width: 100%;
-    line-height: 1.45;
-    overflow-wrap: anywhere;
-}
-
-/* Tables: fixes tags table without class="table" */
-table{
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: var(--surface);
-    border-radius: var(--radius);
-    overflow: hidden;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-}
-
-td a,
-.actions a{
-    padding: 0.4rem 0.7rem;
-    border-radius: var(--radius-sm);
-    background-color: var(--elevated);
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    font-size: 0.84rem;
-}
-
-td a:hover,
-.actions a:hover{
-    color: var(--text);
-    border-color: var(--accent-border);
-}
-
-/* Create links like + Nový tag */
-h1 + a:not(.btn){
-    display: inline-block;
-    padding: 0.55rem 1.15rem;
-    border-radius: var(--radius-sm);
-    background-color: var(--accent);
-    border: 1px solid var(--accent);
-    color: #04201c;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-h1 + a:not(.btn):hover{
-    background-color: var(--accent-hover);
-}
-
-/* Event list cards */
-.event-card{
-    position: relative;
-    gap: 0.45rem;
-    padding: 1.35rem 1.45rem;
-}
-
-.event-card h2,
-.event-card h3{
-    font-size: 1.18rem;
-    letter-spacing: -0.01em;
-}
-
-.event-card p{
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-}
-
-.event-card .tags{
-    margin-top: 0.45rem;
-}
-
-.item-list{
-    gap: 16px;
-}
-
-/* Filter form */
-.filter-form{
-    background-color: var(--surface);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    border-radius: var(--radius);
-    padding: 1rem;
-    margin-bottom: 24px;
-}
-
-.filter-form .input{
-    flex: 1 1 160px;
-    min-width: 150px;
-}
-
-.filter-form input[type="date"]{
-    color-scheme: dark;
-    min-width: 165px;
-}
-
-.date-input{
-    color: transparent;
-}
-.date-input.has-value{
-    color: var(--text);
-}
-
-.filter-form input[type="date"]::-webkit-calendar-picker-indicator{
-    filter: invert(1);
-    opacity: 1;
-    cursor: pointer;
-}
-
-.filter-form a{
-    margin-left: 0;
-    text-decoration: none;
-    padding: 0.55rem 0.9rem;
-    border-radius: var(--radius-sm);
-    background-color: var(--elevated);
-    border: 1px solid var(--border);
-}
-
-/* Homepage dashboard spacing */
-.home-columns{
-    gap: 20px;
-}
-
-.home-column{
-    background-color: #ffffff08;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1rem;
-}
-
-
-/* Detail bottom bar */
-.botbar{
-    max-width: 1180px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0 22px;
-    gap: 0.7rem;
-    flex-wrap: wrap;
-}
-
-.botbar a{
-    padding: 0.55rem 1rem;
-    border-radius: var(--radius-sm);
-    background-color: var(--elevated);
-    border: 1px solid var(--border);
-}
-
-/* Mobile */
 @media (max-width: 700px){
     body{
         padding: 0 14px;
@@ -750,7 +675,6 @@ h1 + a:not(.btn):hover{
     nav{
         gap: 0.45rem;
     }
-
     nav .nav-item{
         flex: 1 1 auto;
         text-align: center;
@@ -761,7 +685,6 @@ h1 + a:not(.btn):hover{
         flex-direction: column;
         align-items: stretch;
     }
-
     .filter-form .input,
     .filter-form .btn,
     .filter-form a{
@@ -782,54 +705,14 @@ h1 + a:not(.btn):hover{
     .home-column{
         width: 100%;
     }
-}
 
-.show-events-btn {
-    display: inline-block; /* Aby správne fungovali okraje */
-    margin-top: 20px;      /* Odsadenie od horného boxu */
-    margin-left: 15px;     /* Odsadenie od ľavého kraja (ak treba) */
-    margin-bottom: 20px;   /* Odsadenie od spodku stránky */
-}
-
-/* Vynútené centrovanie hlavných nadpisov na podstránkach */
-h1, h2, .page-title {
-    text-align: center !important;
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    display: block !important;
-}
-
-/* Kontajner pre spodnú časť karty (ak tam máš obalovací div, inak to chytí priamo prvky) */
-.event-card {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Vytvorenie riadku pre tagy a tlačidlo na spodku karty */
-.event-card .event-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: auto; /* Pushne to úplne na spodok */
-    padding-top: 20px;
-    align-items: center;
-    justify-content: space-between; /* Tagy vľavo, tlačidlo vpravo */
-    width: 100%;
-}
-
-/* Fix pre tlačidlo, aby letelo doprava a malo normálnu šírku */
-.event-card button, 
-.event-card .btn,
-.event-card a.btn,
-.event-card form { 
-    margin: 0 !important; /* Zrušíme centrovanie z minula */
-    max-width: 200px !important;
-    width: 100% !important;
-}
-
-/* Ak je tlačidlo obalené vo formulári, povieme formuláru nech netiahne cez celú šírku */
-.event-card form {
-    display: inline-block;
-    width: auto !important;
+    .event-bottom-row{
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .event-bottom-row .register-form,
+    .event-bottom-row .btn-register{
+        width: 100%;
+        max-width: none;
+    }
 }

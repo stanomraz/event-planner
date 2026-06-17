@@ -22,17 +22,19 @@
         <p>{{ event.location }}</p>
         <p>Organizátor: {{ event.organizer.username }}</p>
         <p>Voľné miesta: {{ event.spots_left }}</p>
-        <div class="tags">
-        {% for tag in event.tags.all %}
-            <span class="tag">{{ tag.name }}</span>
-        {% endfor %}
+        <div class="event-bottom-row">
+            <div class="tags">
+            {% for tag in event.tags.all %}
+                <span class="tag">{{ tag.name }}</span>
+            {% endfor %}
+            </div>
+            {% if user.is_authenticated %}
+            <form method="POST" action="{% url 'event_register' event.pk %}" class="register-form" onclick="event.stopPropagation()">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-register">Prihlásiť sa</button>
+            </form>
+            {% endif %}
         </div>
-        {% if user.is_authenticated %}
-        <form method="POST" action="{% url 'event_register' event.pk %}" class="register-form" onclick="event.stopPropagation()">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-register">Prihlásiť sa</button>
-        </form>
-        {% endif %}
     </a>
 {% empty %}
     <p>Žiadne eventy.</p>
