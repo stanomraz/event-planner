@@ -6,7 +6,7 @@
 <h1>Všetky eventy</h1>
 
 <form method="GET" class="filter-form">
-    <input type="date" name="date" value="{{ request.GET.date }}" class="input date-input">
+    <input type="date" name="date" value="{{ request.GET.date }}" class="input date-input{% if request.GET.date %} has-value{% endif %}" oninput="this.classList.add('has-value')">
     <input type="text" name="city" placeholder="Mesto" value="{{ request.GET.city }}" class="input">
     <input type="text" name="tag" placeholder="Tag" value="{{ request.GET.tag }}" class="input">
     <input type="text" name="organizer" placeholder="Organizátor" value="{{ request.GET.organizer }}" class="input">
