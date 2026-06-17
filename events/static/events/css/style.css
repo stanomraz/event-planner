@@ -690,9 +690,14 @@ h1 + a:not(.btn):hover{
     min-width: 165px;
 }
 
+.date-input:not(:focus):invalid,
+.date-input:not(:focus)[value=""]{
+    color: transparent;
+}
+
 .filter-form input[type="date"]::-webkit-calendar-picker-indicator{
     filter: invert(1);
-    opacity: 0.85;
+    opacity: 0.9;
     cursor: pointer;
 }
 
