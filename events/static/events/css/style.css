@@ -376,6 +376,14 @@ h1 + a:not(.btn):hover{
     border-color: var(--accent);
 }
 
+/* Stav po úspešnej registrácii — len obrys, bez plnej farby */
+.btn-registered{
+    background-color: transparent;
+    border: 1px solid var(--accent-border);
+    color: var(--accent-hover);
+    cursor: default;
+}
+
 .back-btn{
     font-size: 2.2rem;
     color: var(--text-muted);

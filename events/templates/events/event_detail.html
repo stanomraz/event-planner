@@ -3,7 +3,10 @@
 {% block title %}{{ event.title }}{% endblock %}
 
 {% block content %}
-<h1>{{ event.title }}</h1>
+<div class="page-header">
+    <a href="{% url 'event_list' %}" class="back-btn">‹</a>
+    <h1 class="page-title">{{ event.title }}</h1>
+</div>
 <p>{{ event.description }}</p>
 <p><b>Dátum:</b> {{ event.date }}</p>
 <p><b>Čas:</b> {{ event.time }}</p>

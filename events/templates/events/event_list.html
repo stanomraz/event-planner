@@ -29,10 +29,14 @@
             {% endfor %}
             </div>
             {% if user.is_authenticated %}
+            {% if event.pk in registered_event_ids %}
+            <span class="btn btn-register btn-registered">Prihlásený ✓</span>
+            {% else %}
             <form method="POST" action="{% url 'event_register' event.pk %}" class="register-form" onclick="event.stopPropagation()">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-register">Prihlásiť sa</button>
             </form>
+            {% endif %}
             {% endif %}
         </div>
     </a>

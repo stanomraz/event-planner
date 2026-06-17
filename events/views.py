@@ -45,7 +45,20 @@ def event_list(request):
         events = events.filter(organizer__username__icontains=organizer)
 
     tags = Tag.objects.all()
-    return render(request, 'events/event_list.html', {'events': events, 'tags': tags})
+
+    registered_event_ids = set()
+    if request.user.is_authenticated:
+        registered_event_ids = set(
+            Registration.objects.filter(
+                user=request.user, status='confirmed'
+            ).values_list('event_id', flat=True)
+        )
+
+    return render(request, 'events/event_list.html', {
+        'events': events,
+        'tags': tags,
+        'registered_event_ids': registered_event_ids,
+    })
 
 
 def event_detail(request, pk):
@@ -206,9 +219,10 @@ def tag_delete(request, pk):
 # --- ALEX: Registrácia používateľa na event ---
 def event_register(request, pk):
     event = get_object_or_404(Event, pk=pk)
+    next_url = request.META.get('HTTP_REFERER')
     if event.spots_left() <= 0:
         messages.error(request, 'Event je plný!')
-        return redirect('event_detail', pk=pk)
+        return redirect(next_url) if next_url else redirect('event_detail', pk=pk)
     registration, created = Registration.objects.get_or_create(user=request.user, event=event)
     if not created and registration.status == 'confirmed':
         messages.warning(request, 'Už si registrovaný!')
@@ -216,7 +230,7 @@ def event_register(request, pk):
         registration.status = 'confirmed'
         registration.save()
         messages.success(request, 'Úspešne si sa zaregistroval!')
-    return redirect('event_detail', pk=pk)
+    return redirect(next_url) if next_url else redirect('event_detail', pk=pk)
 
 
 @login_required
